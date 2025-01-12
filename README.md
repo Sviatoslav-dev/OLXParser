@@ -17,8 +17,10 @@ The database consists of a single table (OLXAdvertisements) with the following f
 The city and page views are extracted from the API, while all other parameters are scraped from HTML using BeautifulSoup.
 
 To run the application, execute:
+
 ```docker-compose up --build```
 
 The script will start at the beginning of the next minute.
 After, you can check database:
+
 ```docker exec -it postgres_db psql -U admin -d olx_parser```
