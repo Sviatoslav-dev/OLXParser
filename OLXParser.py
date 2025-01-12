@@ -9,7 +9,10 @@ class OLXParser:
         self.olx_link = "https://www.olx.ua"
         self.db = db
 
-    def parse(self, pages):
+    def parse(self, pages: int):
+        """
+        :param pages - number of pages to parse
+        """
         self.db.connect()
         links = []
         for i in range(pages):

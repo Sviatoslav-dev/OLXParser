@@ -56,7 +56,6 @@ class OLXAdsDatabase:
             self.cursor.execute(CREATE_TABLE_QUERY)
             self.conn.commit()
         except psycopg2.Error as e:
-            print(e)
             logger.error(f"Failed to create database: {e}")
 
     def save_ad(self, ad):
@@ -64,7 +63,6 @@ class OLXAdsDatabase:
             self.cursor.execute(INSERT_QUERY, ad)
             self.conn.commit()
         except psycopg2.Error as e:
-            print(e)
             logger.error(f"Failed to save advertisement: {e}")
 
     def advertisement_exists(self, ad_id):
@@ -72,7 +70,6 @@ class OLXAdsDatabase:
             self.cursor.execute(CHECK_URL_QUERY, {"ad_id": ad_id})
             return self.cursor.fetchone()[0]
         except psycopg2.Error as e:
-            print(e)
             logger.error(f"Failed to check advertisement: {e}")
             return False
 
@@ -91,7 +88,6 @@ class OLXAdsDatabase:
 
         command = [
             "pg_dump",
-            # "C:\\Program Files\\PostgreSQL\\17\\bin\\pg_dump.exe",
             "--dbname=postgresql://{user}:{password}@{host}:{port}/{dbname}".format(**DB_CONFIG),
             "-f", dump_file
         ]

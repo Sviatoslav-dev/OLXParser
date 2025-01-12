@@ -8,9 +8,7 @@ from db import OLXAdsDatabase
 db = OLXAdsDatabase()
 
 def parse_website():
-
     parser = OLXParser(db)
-
     parser.parse(pages=5)
 
 schedule.every(1).minutes.do(parse_website)
